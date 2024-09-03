@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS 350\\Project experimentation\\Project experimentation\\Project experimentation.csproj": {}
+    "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS350BlackjackPrj\\Project experimentation\\Project experimentation\\Project experimentation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS 350\\Project experimentation\\Project experimentation\\Project experimentation.csproj": {
+    "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS350BlackjackPrj\\Project experimentation\\Project experimentation\\Project experimentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS 350\\Project experimentation\\Project experimentation\\Project experimentation.csproj",
+        "projectUniqueName": "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS350BlackjackPrj\\Project experimentation\\Project experimentation\\Project experimentation.csproj",
         "projectName": "Project experimentation",
-        "projectPath": "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS 350\\Project experimentation\\Project experimentation\\Project experimentation.csproj",
+        "projectPath": "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS350BlackjackPrj\\Project experimentation\\Project experimentation\\Project experimentation.csproj",
         "packagesPath": "C:\\Users\\tobyo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS 350\\Project experimentation\\Project experimentation\\obj\\",
+        "outputPath": "C:\\Users\\tobyo\\OneDrive\\Desktop\\CS350BlackjackPrj\\Project experimentation\\Project experimentation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tobyo\\AppData\\Roaming\\NuGet\\NuGet.Config",

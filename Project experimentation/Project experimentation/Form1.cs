@@ -36,6 +36,11 @@ namespace Project_experimentation
                 cardDisplayTextBox.Text = ex.Message;
             }
         }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            myDeck = new Deck();
+            cardDisplayTextBox.Text = "Deck reset!";
+        }
         public class Card
         {
             public string Suit { get; }
@@ -92,10 +97,6 @@ namespace Project_experimentation
                 return topCard;
             }
         }
-
-
-
-
 
 
     }

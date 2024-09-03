@@ -31,6 +31,7 @@
             button1 = new Button();
             button2 = new Button();
             cardDisplayTextBox = new TextBox();
+            button3 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -62,11 +63,22 @@
             cardDisplayTextBox.Size = new Size(300, 159);
             cardDisplayTextBox.TabIndex = 2;
             // 
+            // button3
+            // 
+            button3.Location = new Point(831, 355);
+            button3.Name = "button3";
+            button3.Size = new Size(287, 203);
+            button3.TabIndex = 3;
+            button3.Text = "Reset deck";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1271, 674);
+            Controls.Add(button3);
             Controls.Add(cardDisplayTextBox);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -82,5 +94,6 @@
         private Button button1;
         private Button button2;
         private TextBox cardDisplayTextBox;
+        private Button button3;
     }
 }
