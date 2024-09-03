@@ -6,7 +6,9 @@ namespace Project_experimentation
     public partial class Form1 : Form
     {
         private Deck myDeck;
-        //private TextBox cardDisplayTextBox;
+        private List<Card> playerHand = new List<Card>();
+        private List<Card> dealerHand = new List<Card>();
+
         public Form1()
         {
             InitializeComponent();
@@ -40,6 +42,11 @@ namespace Project_experimentation
         {
             myDeck = new Deck();
             cardDisplayTextBox.Text = "Deck reset!";
+            dealerCard1TextBox.Text = "";
+            dealerCard2TextBox.Text = "";
+            playerCard1TextBox.Text = "";
+            playerCard2TextBox.Text = "";
+            playerCard3TextBox.Text = "";
         }
         public class Card
         {
@@ -98,6 +105,44 @@ namespace Project_experimentation
             }
         }
 
+        private void dealButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Card dealtCard = myDeck.Deal();
+                dealerCard1TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                dealerHand.Add(dealtCard);
+                dealtCard = myDeck.Deal();
+                dealerCard2TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                dealerHand.Add(dealtCard);
 
+                dealtCard = myDeck.Deal();
+                playerCard1TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                playerHand.Add(dealtCard);
+                dealtCard = myDeck.Deal();
+                playerCard2TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                playerHand.Add(dealtCard);
+            }
+            catch (InvalidOperationException ex)
+            {
+                cardDisplayTextBox.Text = ex.Message;
+            }
+        }
+
+        private void hitButton_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Card dealtCard = myDeck.Deal();
+                playerCard3TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                playerHand.Add(dealtCard);
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                cardDisplayTextBox.Text = ex.Message;
+            }
+        }
     }
 }
