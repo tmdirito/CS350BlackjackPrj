@@ -42,6 +42,7 @@
             playerCard1TextBox = new TextBox();
             hitButton = new Button();
             standButton = new Button();
+            playerHandValueTextBox = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -182,11 +183,22 @@
             standButton.Text = "Stand";
             standButton.UseVisualStyleBackColor = true;
             // 
+            // playerHandValueTextBox
+            // 
+            playerHandValueTextBox.Location = new Point(565, 504);
+            playerHandValueTextBox.Multiline = true;
+            playerHandValueTextBox.Name = "playerHandValueTextBox";
+            playerHandValueTextBox.ReadOnly = true;
+            playerHandValueTextBox.Size = new Size(177, 120);
+            playerHandValueTextBox.TabIndex = 10;
+           
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1271, 674);
+            Controls.Add(playerHandValueTextBox);
             Controls.Add(standButton);
             Controls.Add(hitButton);
             Controls.Add(groupBox2);
@@ -222,5 +234,6 @@
         private Button standButton;
         private TextBox playerCard4TextBox;
         private TextBox playerCard3TextBox;
+        private TextBox playerHandValueTextBox;
     }
 }
