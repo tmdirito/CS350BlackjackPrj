@@ -47,6 +47,10 @@ namespace Project_experimentation
             playerCard1TextBox.Text = "";
             playerCard2TextBox.Text = "";
             playerCard3TextBox.Text = "";
+            playerHandValueTextBox.Text = "";
+            dealerHandValueTextBox.Text = "";
+            playerHand.Clear();
+            dealerHand.Clear();
         }
         public class Card // Card class to create card object that contains rank and suit.
         {
@@ -116,12 +120,15 @@ namespace Project_experimentation
                 dealerCard2TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
                 dealerHand.Add(dealtCard);
 
+
                 dealtCard = myDeck.Deal();
                 playerCard1TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
                 playerHand.Add(dealtCard);
                 dealtCard = myDeck.Deal();
                 playerCard2TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
                 playerHand.Add(dealtCard);
+
+                dealerHandValueTextBox.Text = "Dealer hand value: " + (CalculateHandValue(dealerHand).ToString());
                 playerHandValueTextBox.Text = "Player hand value: " + (CalculateHandValue(playerHand).ToString());
             }
             catch (InvalidOperationException ex)
@@ -183,6 +190,12 @@ namespace Project_experimentation
             return value;
         }
 
-        
+        private void standButton_Click(object sender, EventArgs e)
+        {
+            while (CalculateHandValue(dealerHand) < 17)
+            {
+
+            }
+        }
     }
 }

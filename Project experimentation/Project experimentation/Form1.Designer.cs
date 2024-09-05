@@ -43,18 +43,21 @@
             hitButton = new Button();
             standButton = new Button();
             playerHandValueTextBox = new TextBox();
+            dealerHandValueTextBox = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // button1
             // 
+            button1.BackColor = SystemColors.GradientActiveCaption;
+            button1.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Location = new Point(1068, 401);
             button1.Name = "button1";
             button1.Size = new Size(191, 122);
             button1.TabIndex = 0;
             button1.Text = "Shuffle";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // cardDisplayTextBox
@@ -68,12 +71,14 @@
             // 
             // button3
             // 
+            button3.BackColor = SystemColors.GradientActiveCaption;
+            button3.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button3.Location = new Point(1068, 530);
             button3.Name = "button3";
             button3.Size = new Size(191, 123);
             button3.TabIndex = 3;
             button3.Text = "Reset deck";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // groupBox1
@@ -107,12 +112,14 @@
             // 
             // dealButton
             // 
-            dealButton.Location = new Point(531, 97);
+            dealButton.BackColor = SystemColors.GradientActiveCaption;
+            dealButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dealButton.Location = new Point(791, 83);
             dealButton.Name = "dealButton";
             dealButton.Size = new Size(228, 98);
             dealButton.TabIndex = 5;
             dealButton.Text = "Deal";
-            dealButton.UseVisualStyleBackColor = true;
+            dealButton.UseVisualStyleBackColor = false;
             dealButton.Click += dealButton_Click;
             // 
             // groupBox2
@@ -166,22 +173,27 @@
             // 
             // hitButton
             // 
+            hitButton.BackColor = SystemColors.GradientActiveCaption;
+            hitButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
             hitButton.Location = new Point(576, 337);
             hitButton.Name = "hitButton";
             hitButton.Size = new Size(150, 46);
             hitButton.TabIndex = 8;
             hitButton.Text = "Hit";
-            hitButton.UseVisualStyleBackColor = true;
+            hitButton.UseVisualStyleBackColor = false;
             hitButton.Click += hitButton_Click;
             // 
             // standButton
             // 
+            standButton.BackColor = SystemColors.GradientActiveCaption;
+            standButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
             standButton.Location = new Point(576, 434);
             standButton.Name = "standButton";
             standButton.Size = new Size(150, 46);
             standButton.TabIndex = 9;
             standButton.Text = "Stand";
-            standButton.UseVisualStyleBackColor = true;
+            standButton.UseVisualStyleBackColor = false;
+            standButton.Click += standButton_Click;
             // 
             // playerHandValueTextBox
             // 
@@ -191,13 +203,23 @@
             playerHandValueTextBox.ReadOnly = true;
             playerHandValueTextBox.Size = new Size(177, 120);
             playerHandValueTextBox.TabIndex = 10;
-           
+            // 
+            // dealerHandValueTextBox
+            // 
+            dealerHandValueTextBox.Location = new Point(549, 81);
+            dealerHandValueTextBox.Multiline = true;
+            dealerHandValueTextBox.Name = "dealerHandValueTextBox";
+            dealerHandValueTextBox.ReadOnly = true;
+            dealerHandValueTextBox.Size = new Size(177, 120);
+            dealerHandValueTextBox.TabIndex = 11;
+            dealerHandValueTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1271, 674);
+            Controls.Add(dealerHandValueTextBox);
             Controls.Add(playerHandValueTextBox);
             Controls.Add(standButton);
             Controls.Add(hitButton);
@@ -235,5 +257,6 @@
         private TextBox playerCard4TextBox;
         private TextBox playerCard3TextBox;
         private TextBox playerHandValueTextBox;
+        private TextBox dealerHandValueTextBox;
     }
 }
