@@ -44,6 +44,7 @@ namespace Project_experimentation
             cardDisplayTextBox.Text = "Deck reset!";
             dealerCard1TextBox.Text = "";
             dealerCard2TextBox.Text = "";
+            dealerCard3TextBox.Text = "";
             playerCard1TextBox.Text = "";
             playerCard2TextBox.Text = "";
             playerCard3TextBox.Text = "";
@@ -194,8 +195,31 @@ namespace Project_experimentation
         {
             while (CalculateHandValue(dealerHand) < 17)
             {
-
+                Card dealtCard = myDeck.Deal();
+                dealerCard3TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
+                dealerHand.Add(dealtCard);
+                dealerHandValueTextBox.Text = "Dealer hand value: " + CalculateHandValue(dealerHand).ToString();
             }
+
+            int playerHandValue = CalculateHandValue(playerHand);
+            int dealerHandValue = CalculateHandValue(dealerHand);
+            string resultMessage;
+
+            if (dealerHandValue > 21)
+            {
+                resultMessage = "Player wins - Dealer busts!";
+            } else if (playerHandValue > dealerHandValue)
+            {
+                resultMessage = "Player wins!";
+            } else if (dealerHandValue > playerHandValue)
+            {
+                resultMessage = "Dealer wins!";
+            } else
+            {
+                resultMessage = "Push - Tie game!";
+            }
+
+            cardDisplayTextBox.Text = resultMessage;
         }
     }
 }
