@@ -96,17 +96,21 @@ namespace Project_experimentation
         {
             myDeck = new Deck();
             cardDisplayTextBox.Text = "Deck reset!";
-            dealerCard1TextBox.Text = "";
-            dealerCard2TextBox.Text = "";
-            dealerCard3TextBox.Text = "";
-            playerCard1TextBox.Text = "";
-            playerCard2TextBox.Text = "";
-            playerCard3TextBox.Text = "";
             playerHandValueTextBox.Text = "";
             dealerHandValueTextBox.Text = "";
             playerHand.Clear();
             dealerHand.Clear();
-            playerPictureBox1.Image = null; playerPictureBox2.Image = null; playerPictureBox3.Image = null; dealerPictureBox1.Image = null; dealerPictureBox2.Image = null; dealerPictureBox3.Image = null;
+
+            hitButton.Enabled = true;
+            for (int i = this.Controls.Count - 1; i >= 0; i--) // New functionality added to remove all dynamic picture boxes created within the program
+            {
+                if (this.Controls[i] is PictureBox pictureBox)
+                {
+                    this.Controls.Remove(pictureBox);
+                    pictureBox.Dispose();
+                }
+
+            }
         }
         public class Card // Card class to create card object that contains rank and suit.
         {
@@ -170,43 +174,76 @@ namespace Project_experimentation
             try
             {
                 Card dealtCard = myDeck.Deal();
-                dealerCard1TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}";
                 dealerHand.Add(dealtCard);
+                createPictureBoxDealer(dealtCard);
                 dealtCard = myDeck.Deal();
-                dealerCard2TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}";
                 dealerHand.Add(dealtCard);
+                createPictureBoxDealer(dealtCard);
+
+
 
 
                 dealtCard = myDeck.Deal();
-                playerCard1TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}";
                 playerHand.Add(dealtCard);
+                createPictureBoxPlayer(dealtCard);
                 dealtCard = myDeck.Deal();
-                playerCard2TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}";
                 playerHand.Add(dealtCard);
+                createPictureBoxPlayer(dealtCard);
 
                 dealerHandValueTextBox.Text = "Dealer hand value: " + (CalculateHandValue(dealerHand).ToString());
                 playerHandValueTextBox.Text = "Player hand value: " + (CalculateHandValue(playerHand).ToString());
 
-                DisplayCardImage(playerPictureBox1, playerHand[0]); // displays the card image
-                DisplayCardImage(playerPictureBox2, playerHand[1]);
-                DisplayCardImage(dealerPictureBox1, dealerHand[0]);
-                DisplayCardImage(dealerPictureBox2, dealerHand[1]);
+
             }
             catch (InvalidOperationException ex)
             {
                 cardDisplayTextBox.Text = ex.Message;
             }
         }
+        private void createPictureBoxDealer(Card dealtCard) // Method that creates a dynamic pictureBox at the dealer's hand location and displays the newly dealt card within that
+        {
+            PictureBox newPictureBox = new PictureBox();
+            newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+            newPictureBox.Size = new Size(150, 225);
 
+            int x = 10 + (dealerHand.Count - 1) * 110;
+            int y = 100;
+            newPictureBox.Location = new Point(x, y);
+
+            DisplayCardImage(newPictureBox, dealtCard);
+
+            this.Controls.Add(newPictureBox);
+
+            newPictureBox.BringToFront();
+        }
+        private void createPictureBoxPlayer(Card dealtCard) // Similar method to createPictureBoxDealer but for the player's hand location
+        {
+            PictureBox newPictureBox = new PictureBox();
+            newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+            newPictureBox.Size = new Size(150, 225);
+
+            int x = 10 + (playerHand.Count - 1) * 110;
+            int y = 600;
+            newPictureBox.Location = new Point(x, y);
+
+            DisplayCardImage(newPictureBox, dealtCard);
+
+            this.Controls.Add(newPictureBox);
+
+            newPictureBox.BringToFront();
+        }
         private void hitButton_Click(object sender, EventArgs e) // Hit button functionality
         {
 
             try
             {
                 Card dealtCard = myDeck.Deal();
-                playerCard3TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
+               
                 playerHand.Add(dealtCard);
-                DisplayCardImage(playerPictureBox3, playerHand[2]);
+
+                createPictureBoxPlayer(dealtCard);
+
+
 
                 int playerHandValue = CalculateHandValue(playerHand);
                 playerHandValueTextBox.Text = "Player Hand Value: " + playerHandValue.ToString();
@@ -214,6 +251,7 @@ namespace Project_experimentation
                 if (playerHandValue > 21)
                 {
                     cardDisplayTextBox.Text = "Player busts! Dealer wins.";
+                    hitButton.Enabled = false;
                 }
             }
             catch (InvalidOperationException ex)
@@ -257,10 +295,10 @@ namespace Project_experimentation
             while (CalculateHandValue(dealerHand) < 17)
             {
                 Card dealtCard = myDeck.Deal();
-                dealerCard3TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
                 
+
                 dealerHand.Add(dealtCard);
-                DisplayCardImage(dealerPictureBox3, dealerHand[2]);
+                createPictureBoxDealer(dealtCard);
                 dealerHandValueTextBox.Text = "Dealer hand value: " + CalculateHandValue(dealerHand).ToString();
             }
 
