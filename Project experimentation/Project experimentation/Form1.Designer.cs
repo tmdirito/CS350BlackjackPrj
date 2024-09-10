@@ -37,7 +37,6 @@
             dealerCard1TextBox = new TextBox();
             dealButton = new Button();
             groupBox2 = new GroupBox();
-            playerCard4TextBox = new TextBox();
             playerCard3TextBox = new TextBox();
             playerCard2TextBox = new TextBox();
             playerCard1TextBox = new TextBox();
@@ -45,15 +44,21 @@
             standButton = new Button();
             playerHandValueTextBox = new TextBox();
             dealerHandValueTextBox = new TextBox();
+            playerPictureBox1 = new PictureBox();
+            playerPictureBox2 = new PictureBox();
+            playerPictureBox3 = new PictureBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)playerPictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerPictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerPictureBox3).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
             button1.BackColor = SystemColors.GradientActiveCaption;
             button1.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(1068, 401);
+            button1.Location = new Point(1853, 371);
             button1.Name = "button1";
             button1.Size = new Size(191, 122);
             button1.TabIndex = 0;
@@ -63,7 +68,7 @@
             // 
             // cardDisplayTextBox
             // 
-            cardDisplayTextBox.Location = new Point(1068, 97);
+            cardDisplayTextBox.Location = new Point(1853, 22);
             cardDisplayTextBox.Multiline = true;
             cardDisplayTextBox.Name = "cardDisplayTextBox";
             cardDisplayTextBox.ReadOnly = true;
@@ -74,7 +79,7 @@
             // 
             button3.BackColor = SystemColors.GradientActiveCaption;
             button3.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(1068, 530);
+            button3.Location = new Point(1853, 537);
             button3.Name = "button3";
             button3.Size = new Size(191, 123);
             button3.TabIndex = 3;
@@ -89,14 +94,14 @@
             groupBox1.Controls.Add(dealerCard1TextBox);
             groupBox1.Location = new Point(67, 46);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(403, 308);
+            groupBox1.Size = new Size(666, 447);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dealer's Hand";
             // 
             // dealerCard3TextBox
             // 
-            dealerCard3TextBox.Location = new Point(21, 187);
+            dealerCard3TextBox.Location = new Point(81, 274);
             dealerCard3TextBox.Multiline = true;
             dealerCard3TextBox.Name = "dealerCard3TextBox";
             dealerCard3TextBox.ReadOnly = true;
@@ -105,7 +110,7 @@
             // 
             // dealerCard2TextBox
             // 
-            dealerCard2TextBox.Location = new Point(200, 51);
+            dealerCard2TextBox.Location = new Point(274, 71);
             dealerCard2TextBox.Multiline = true;
             dealerCard2TextBox.Name = "dealerCard2TextBox";
             dealerCard2TextBox.ReadOnly = true;
@@ -114,7 +119,7 @@
             // 
             // dealerCard1TextBox
             // 
-            dealerCard1TextBox.Location = new Point(21, 51);
+            dealerCard1TextBox.Location = new Point(59, 51);
             dealerCard1TextBox.Multiline = true;
             dealerCard1TextBox.Name = "dealerCard1TextBox";
             dealerCard1TextBox.ReadOnly = true;
@@ -125,7 +130,7 @@
             // 
             dealButton.BackColor = SystemColors.GradientActiveCaption;
             dealButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dealButton.Location = new Point(1068, 286);
+            dealButton.Location = new Point(1853, 228);
             dealButton.Name = "dealButton";
             dealButton.Size = new Size(191, 109);
             dealButton.TabIndex = 5;
@@ -135,29 +140,22 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(playerCard4TextBox);
+            groupBox2.Controls.Add(playerPictureBox3);
+            groupBox2.Controls.Add(playerPictureBox2);
+            groupBox2.Controls.Add(playerPictureBox1);
             groupBox2.Controls.Add(playerCard3TextBox);
             groupBox2.Controls.Add(playerCard2TextBox);
             groupBox2.Controls.Add(playerCard1TextBox);
-            groupBox2.Location = new Point(33, 416);
+            groupBox2.Location = new Point(17, 515);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(403, 237);
+            groupBox2.Size = new Size(912, 297);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Your Hand";
             // 
-            // playerCard4TextBox
-            // 
-            playerCard4TextBox.Location = new Point(200, 135);
-            playerCard4TextBox.Multiline = true;
-            playerCard4TextBox.Name = "playerCard4TextBox";
-            playerCard4TextBox.ReadOnly = true;
-            playerCard4TextBox.Size = new Size(173, 71);
-            playerCard4TextBox.TabIndex = 8;
-            // 
             // playerCard3TextBox
             // 
-            playerCard3TextBox.Location = new Point(21, 135);
+            playerCard3TextBox.Location = new Point(527, 219);
             playerCard3TextBox.Multiline = true;
             playerCard3TextBox.Name = "playerCard3TextBox";
             playerCard3TextBox.ReadOnly = true;
@@ -166,7 +164,7 @@
             // 
             // playerCard2TextBox
             // 
-            playerCard2TextBox.Location = new Point(200, 39);
+            playerCard2TextBox.Location = new Point(243, 219);
             playerCard2TextBox.Multiline = true;
             playerCard2TextBox.Name = "playerCard2TextBox";
             playerCard2TextBox.ReadOnly = true;
@@ -175,7 +173,7 @@
             // 
             // playerCard1TextBox
             // 
-            playerCard1TextBox.Location = new Point(21, 39);
+            playerCard1TextBox.Location = new Point(19, 219);
             playerCard1TextBox.Multiline = true;
             playerCard1TextBox.Name = "playerCard1TextBox";
             playerCard1TextBox.ReadOnly = true;
@@ -186,7 +184,7 @@
             // 
             hitButton.BackColor = SystemColors.GradientActiveCaption;
             hitButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            hitButton.Location = new Point(490, 416);
+            hitButton.Location = new Point(985, 553);
             hitButton.Name = "hitButton";
             hitButton.Size = new Size(150, 46);
             hitButton.TabIndex = 8;
@@ -198,7 +196,7 @@
             // 
             standButton.BackColor = SystemColors.GradientActiveCaption;
             standButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            standButton.Location = new Point(490, 477);
+            standButton.Location = new Point(985, 614);
             standButton.Name = "standButton";
             standButton.Size = new Size(150, 46);
             standButton.TabIndex = 9;
@@ -208,7 +206,7 @@
             // 
             // playerHandValueTextBox
             // 
-            playerHandValueTextBox.Location = new Point(478, 542);
+            playerHandValueTextBox.Location = new Point(985, 692);
             playerHandValueTextBox.Multiline = true;
             playerHandValueTextBox.Name = "playerHandValueTextBox";
             playerHandValueTextBox.ReadOnly = true;
@@ -217,7 +215,7 @@
             // 
             // dealerHandValueTextBox
             // 
-            dealerHandValueTextBox.Location = new Point(530, 144);
+            dealerHandValueTextBox.Location = new Point(823, 117);
             dealerHandValueTextBox.Multiline = true;
             dealerHandValueTextBox.Name = "dealerHandValueTextBox";
             dealerHandValueTextBox.ReadOnly = true;
@@ -225,11 +223,35 @@
             dealerHandValueTextBox.TabIndex = 11;
             dealerHandValueTextBox.TextAlign = HorizontalAlignment.Center;
             // 
+            // playerPictureBox1
+            // 
+            playerPictureBox1.Location = new Point(19, 38);
+            playerPictureBox1.Name = "playerPictureBox1";
+            playerPictureBox1.Size = new Size(129, 171);
+            playerPictureBox1.TabIndex = 12;
+            playerPictureBox1.TabStop = false;
+            // 
+            // playerPictureBox2
+            // 
+            playerPictureBox2.Location = new Point(243, 19);
+            playerPictureBox2.Name = "playerPictureBox2";
+            playerPictureBox2.Size = new Size(129, 171);
+            playerPictureBox2.TabIndex = 13;
+            playerPictureBox2.TabStop = false;
+            // 
+            // playerPictureBox3
+            // 
+            playerPictureBox3.Location = new Point(529, 22);
+            playerPictureBox3.Name = "playerPictureBox3";
+            playerPictureBox3.Size = new Size(129, 171);
+            playerPictureBox3.TabIndex = 14;
+            playerPictureBox3.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1288, 685);
+            ClientSize = new Size(2144, 847);
             Controls.Add(dealerHandValueTextBox);
             Controls.Add(playerHandValueTextBox);
             Controls.Add(standButton);
@@ -247,6 +269,9 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)playerPictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerPictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerPictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -265,10 +290,12 @@
         private TextBox playerCard1TextBox;
         private Button hitButton;
         private Button standButton;
-        private TextBox playerCard4TextBox;
         private TextBox playerCard3TextBox;
         private TextBox playerHandValueTextBox;
         private TextBox dealerHandValueTextBox;
         private TextBox dealerCard3TextBox;
+        private PictureBox playerPictureBox1;
+        private PictureBox playerPictureBox3;
+        private PictureBox playerPictureBox2;
     }
 }

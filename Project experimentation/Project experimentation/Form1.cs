@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
+using System.IO;
 namespace Project_experimentation
 {
     public partial class Form1 : Form // All variables that need to be accessed by any methods (i.e "public" variables) should be placed under here
@@ -8,6 +10,33 @@ namespace Project_experimentation
         private Deck myDeck; // Initialize deck variable
         private List<Card> playerHand = new List<Card>();
         private List<Card> dealerHand = new List<Card>();
+
+        private Dictionary<string, Image> cardImages = new Dictionary<string, Image>(); // Dictionary to load all image files upon launch
+
+        private string cardImagesFolderPath = @"..\..\..\images";
+
+
+        private void DisplayCardImage(PictureBox pictureBox, Card card)
+        {
+            string imageName = GetCardImageName(card);
+
+            if (!cardImages.ContainsKey(imageName))
+            {
+                string imagePath = Path.Combine(cardImagesFolderPath, imageName);
+                cardImages[imageName] = Image.FromFile(imagePath);
+            }
+
+            pictureBox.Image = cardImages[imageName];
+        }
+
+        private string GetCardImageName(Card card)
+        {
+            char suitChar = card.Suit.ToString().ToLower()[0];
+            int rankValue = (int)card.Rank + 1;
+            string formattedRank = rankValue.ToString("D2");
+            return $"{suitChar}{formattedRank}.bmp";
+        }
+
         public enum Suit
         {
             Hearts,
@@ -75,6 +104,7 @@ namespace Project_experimentation
             dealerHandValueTextBox.Text = "";
             playerHand.Clear();
             dealerHand.Clear();
+            playerPictureBox1.Image = null; playerPictureBox2.Image = null; playerPictureBox3.Image = null;
         }
         public class Card // Card class to create card object that contains rank and suit.
         {
@@ -154,6 +184,9 @@ namespace Project_experimentation
 
                 dealerHandValueTextBox.Text = "Dealer hand value: " + (CalculateHandValue(dealerHand).ToString());
                 playerHandValueTextBox.Text = "Player hand value: " + (CalculateHandValue(playerHand).ToString());
+
+                DisplayCardImage(playerPictureBox1, playerHand[0]);
+                DisplayCardImage(playerPictureBox2, playerHand[1]);
             }
             catch (InvalidOperationException ex)
             {
@@ -169,6 +202,7 @@ namespace Project_experimentation
                 Card dealtCard = myDeck.Deal();
                 playerCard3TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
                 playerHand.Add(dealtCard);
+                DisplayCardImage(playerPictureBox3, playerHand[2]);
 
                 int playerHandValue = CalculateHandValue(playerHand);
                 playerHandValueTextBox.Text = "Player Hand Value: " + playerHandValue.ToString();
@@ -219,7 +253,7 @@ namespace Project_experimentation
             while (CalculateHandValue(dealerHand) < 17)
             {
                 Card dealtCard = myDeck.Deal();
-                dealerCard3TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
+                dealerCard3TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
                 dealerHand.Add(dealtCard);
                 dealerHandValueTextBox.Text = "Dealer hand value: " + CalculateHandValue(dealerHand).ToString();
             }
