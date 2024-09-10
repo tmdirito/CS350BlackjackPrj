@@ -26,7 +26,9 @@ namespace Project_experimentation
                 cardImages[imageName] = Image.FromFile(imagePath); // sets card in dictionary
             }
 
-            pictureBox.Image = cardImages[imageName]; // displays correct card in picture box
+            Image resizedImage = new Bitmap(cardImages[imageName], new Size(150, 225));
+            pictureBox.Image = resizedImage;
+            // pictureBox.Image = cardImages[imageName]; // displays correct card in picture box
         }
 
         private string GetCardImageName(Card card) // method to convert card to image file name 
@@ -188,7 +190,7 @@ namespace Project_experimentation
                 DisplayCardImage(playerPictureBox1, playerHand[0]); // displays the card image
                 DisplayCardImage(playerPictureBox2, playerHand[1]);
                 DisplayCardImage(dealerPictureBox1, dealerHand[0]);
-                DisplayCardImage(dealerPictureBox2 , dealerHand[1]);
+                DisplayCardImage(dealerPictureBox2, dealerHand[1]);
             }
             catch (InvalidOperationException ex)
             {

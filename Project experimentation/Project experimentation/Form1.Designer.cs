@@ -32,6 +32,9 @@
             cardDisplayTextBox = new TextBox();
             button3 = new Button();
             groupBox1 = new GroupBox();
+            dealerPictureBox3 = new PictureBox();
+            dealerPictureBox2 = new PictureBox();
+            dealerPictureBox1 = new PictureBox();
             dealerCard3TextBox = new TextBox();
             dealerCard2TextBox = new TextBox();
             dealerCard1TextBox = new TextBox();
@@ -47,17 +50,14 @@
             standButton = new Button();
             playerHandValueTextBox = new TextBox();
             dealerHandValueTextBox = new TextBox();
-            dealerPictureBox1 = new PictureBox();
-            dealerPictureBox2 = new PictureBox();
-            dealerPictureBox3 = new PictureBox();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dealerPictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dealerPictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dealerPictureBox1).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)playerPictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)playerPictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)playerPictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dealerPictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dealerPictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dealerPictureBox3).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -107,6 +107,30 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dealer's Hand";
+            // 
+            // dealerPictureBox3
+            // 
+            dealerPictureBox3.Location = new Point(937, 38);
+            dealerPictureBox3.Name = "dealerPictureBox3";
+            dealerPictureBox3.Size = new Size(193, 246);
+            dealerPictureBox3.TabIndex = 17;
+            dealerPictureBox3.TabStop = false;
+            // 
+            // dealerPictureBox2
+            // 
+            dealerPictureBox2.Location = new Point(564, 27);
+            dealerPictureBox2.Name = "dealerPictureBox2";
+            dealerPictureBox2.Size = new Size(179, 246);
+            dealerPictureBox2.TabIndex = 16;
+            dealerPictureBox2.TabStop = false;
+            // 
+            // dealerPictureBox1
+            // 
+            dealerPictureBox1.Location = new Point(95, 46);
+            dealerPictureBox1.Name = "dealerPictureBox1";
+            dealerPictureBox1.Size = new Size(194, 246);
+            dealerPictureBox1.TabIndex = 15;
+            dealerPictureBox1.TabStop = false;
             // 
             // dealerCard3TextBox
             // 
@@ -256,30 +280,6 @@
             dealerHandValueTextBox.TabIndex = 11;
             dealerHandValueTextBox.TextAlign = HorizontalAlignment.Center;
             // 
-            // dealerPictureBox1
-            // 
-            dealerPictureBox1.Location = new Point(95, 46);
-            dealerPictureBox1.Name = "dealerPictureBox1";
-            dealerPictureBox1.Size = new Size(136, 246);
-            dealerPictureBox1.TabIndex = 15;
-            dealerPictureBox1.TabStop = false;
-            // 
-            // dealerPictureBox2
-            // 
-            dealerPictureBox2.Location = new Point(564, 27);
-            dealerPictureBox2.Name = "dealerPictureBox2";
-            dealerPictureBox2.Size = new Size(136, 246);
-            dealerPictureBox2.TabIndex = 16;
-            dealerPictureBox2.TabStop = false;
-            // 
-            // dealerPictureBox3
-            // 
-            dealerPictureBox3.Location = new Point(937, 38);
-            dealerPictureBox3.Name = "dealerPictureBox3";
-            dealerPictureBox3.Size = new Size(136, 246);
-            dealerPictureBox3.TabIndex = 17;
-            dealerPictureBox3.TabStop = false;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -300,14 +300,14 @@
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dealerPictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dealerPictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dealerPictureBox1).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)playerPictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)playerPictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)playerPictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dealerPictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dealerPictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dealerPictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
