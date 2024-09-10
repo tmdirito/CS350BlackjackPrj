@@ -13,52 +13,52 @@ namespace Project_experimentation
 
         private Dictionary<string, Image> cardImages = new Dictionary<string, Image>(); // Dictionary to load all image files upon launch
 
-        private string cardImagesFolderPath = @"..\..\..\images";
+        private string cardImagesFolderPath = @"..\..\..\images"; // Path to image folder (three directories up)
 
 
-        private void DisplayCardImage(PictureBox pictureBox, Card card)
+        private void DisplayCardImage(PictureBox pictureBox, Card card) // method to display the card image 
         {
-            string imageName = GetCardImageName(card);
+            string imageName = GetCardImageName(card); // gets the actual image name (i.e. h05.bmp)
 
-            if (!cardImages.ContainsKey(imageName))
+            if (!cardImages.ContainsKey(imageName)) // assigns it to the empty dict
             {
-                string imagePath = Path.Combine(cardImagesFolderPath, imageName);
-                cardImages[imageName] = Image.FromFile(imagePath);
+                string imagePath = Path.Combine(cardImagesFolderPath, imageName); // sets path for specific image
+                cardImages[imageName] = Image.FromFile(imagePath); // sets card in dictionary
             }
 
-            pictureBox.Image = cardImages[imageName];
+            pictureBox.Image = cardImages[imageName]; // displays correct card in picture box
         }
 
-        private string GetCardImageName(Card card)
+        private string GetCardImageName(Card card) // method to convert card to image file name 
         {
-            char suitChar = card.Suit.ToString().ToLower()[0];
-            int rankValue = (int)card.Rank + 1;
-            string formattedRank = rankValue.ToString("D2");
-            return $"{suitChar}{formattedRank}.bmp";
+            char suitChar = card.Suit.ToString().ToLower()[0]; // take first letter of suit and turns is lowercase
+            int rankValue = (int)card.Rank + 1; // Gets card value based on enum index
+            string formattedRank = rankValue.ToString("D2"); // formats rank as double digit
+            return $"{suitChar}{formattedRank}.bmp"; // returns image file name in correct syntax
         }
 
-        public enum Suit
+        public enum Suit // enum for suits
         {
-            Hearts,
-            Diamonds,
-            Clubs,
-            Spades
+            Hearts, // # 0
+            Diamonds, // # 1
+            Clubs, // # 2
+            Spades // # 3
         }
-        public enum Rank
+        public enum Rank // enum for card ranks
         {
-            Ace,
-            Two,
-            Three,
-            Four,
-            Five,
-            Six,
-            Seven,
-            Eight,
-            Nine,
-            Ten,
-            Jack,
-            Queen,
-            King
+            Ace, // 0
+            Two, // 1
+            Three, // 2
+            Four, //3 
+            Five, // 4
+            Six, // 5
+            Seven, // 6
+            Eight, // 7
+            Nine, // 8
+            Ten, // 9
+            Jack, // 10
+            Queen, // 11
+            King // 12
         }
 
         public Form1() // This is the start of the program, so all code that needs to happen upon launch should go here
@@ -185,7 +185,7 @@ namespace Project_experimentation
                 dealerHandValueTextBox.Text = "Dealer hand value: " + (CalculateHandValue(dealerHand).ToString());
                 playerHandValueTextBox.Text = "Player hand value: " + (CalculateHandValue(playerHand).ToString());
 
-                DisplayCardImage(playerPictureBox1, playerHand[0]);
+                DisplayCardImage(playerPictureBox1, playerHand[0]); // displays the card image
                 DisplayCardImage(playerPictureBox2, playerHand[1]);
             }
             catch (InvalidOperationException ex)
