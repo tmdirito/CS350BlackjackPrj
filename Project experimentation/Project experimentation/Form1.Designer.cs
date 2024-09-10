@@ -186,7 +186,7 @@
             // 
             hitButton.BackColor = SystemColors.GradientActiveCaption;
             hitButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            hitButton.Location = new Point(490, 425);
+            hitButton.Location = new Point(490, 416);
             hitButton.Name = "hitButton";
             hitButton.Size = new Size(150, 46);
             hitButton.TabIndex = 8;
@@ -217,7 +217,7 @@
             // 
             // dealerHandValueTextBox
             // 
-            dealerHandValueTextBox.Location = new Point(516, 111);
+            dealerHandValueTextBox.Location = new Point(530, 144);
             dealerHandValueTextBox.Multiline = true;
             dealerHandValueTextBox.Name = "dealerHandValueTextBox";
             dealerHandValueTextBox.ReadOnly = true;
@@ -229,7 +229,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1271, 674);
+            ClientSize = new Size(1288, 685);
             Controls.Add(dealerHandValueTextBox);
             Controls.Add(playerHandValueTextBox);
             Controls.Add(standButton);

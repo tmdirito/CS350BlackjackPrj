@@ -8,6 +8,29 @@ namespace Project_experimentation
         private Deck myDeck; // Initialize deck variable
         private List<Card> playerHand = new List<Card>();
         private List<Card> dealerHand = new List<Card>();
+        public enum Suit
+        {
+            Hearts,
+            Diamonds,
+            Clubs,
+            Spades
+        }
+        public enum Rank
+        {
+            Ace,
+            Two,
+            Three,
+            Four,
+            Five,
+            Six,
+            Seven,
+            Eight,
+            Nine,
+            Ten,
+            Jack,
+            Queen,
+            King
+        }
 
         public Form1() // This is the start of the program, so all code that needs to happen upon launch should go here
         {
@@ -55,10 +78,10 @@ namespace Project_experimentation
         }
         public class Card // Card class to create card object that contains rank and suit.
         {
-            public string Suit { get; }
-            public string Rank { get; }
+            public Suit Suit { get; }
+            public Rank Rank { get; }
 
-            public Card(string suit, string rank)
+            public Card(Suit suit, Rank rank)
             {
                 Suit = suit;
                 Rank = rank;
@@ -73,12 +96,12 @@ namespace Project_experimentation
             {
                 random = new Random();
                 cards = new List<Card>();
-                string[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
-                string[] ranks = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
+                // string[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
+                // string[] ranks = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
 
-                foreach (string suit in suits)
+                foreach (Suit suit in Enum.GetValues(typeof(Suit)))
                 {
-                    foreach (string rank in ranks)
+                    foreach (Rank rank in Enum.GetValues(typeof(Rank)))
                     {
                         cards.Add(new Card(suit, rank));
                     }
@@ -115,18 +138,18 @@ namespace Project_experimentation
             try
             {
                 Card dealtCard = myDeck.Deal();
-                dealerCard1TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                dealerCard1TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}";
                 dealerHand.Add(dealtCard);
                 dealtCard = myDeck.Deal();
-                dealerCard2TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                dealerCard2TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}";
                 dealerHand.Add(dealtCard);
 
 
                 dealtCard = myDeck.Deal();
-                playerCard1TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                playerCard1TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}";
                 playerHand.Add(dealtCard);
                 dealtCard = myDeck.Deal();
-                playerCard2TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}";
+                playerCard2TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}";
                 playerHand.Add(dealtCard);
 
                 dealerHandValueTextBox.Text = "Dealer hand value: " + (CalculateHandValue(dealerHand).ToString());
@@ -144,7 +167,7 @@ namespace Project_experimentation
             try
             {
                 Card dealtCard = myDeck.Deal();
-                playerCard3TextBox.Text = $"{dealtCard.Rank} of {dealtCard.Suit}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
+                playerCard3TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
                 playerHand.Add(dealtCard);
 
                 int playerHandValue = CalculateHandValue(playerHand);
@@ -168,18 +191,18 @@ namespace Project_experimentation
 
             foreach (Card card in hand)
             {
-                if (card.Rank == "Ace")
+                if (card.Rank == Rank.Ace)
                 {
                     numAces++;
                     value += 11;
                 }
-                else if (card.Rank == "King" || card.Rank == "Queen" || card.Rank == "Jack")
+                else if (card.Rank == Rank.King || card.Rank == Rank.Queen || card.Rank == Rank.Jack)
                 {
                     value += 10;
                 }
                 else
                 {
-                    value += int.Parse(card.Rank);
+                    value += (int)card.Rank + 1;
                 }
             }
 
@@ -208,13 +231,16 @@ namespace Project_experimentation
             if (dealerHandValue > 21)
             {
                 resultMessage = "Player wins - Dealer busts!";
-            } else if (playerHandValue > dealerHandValue)
+            }
+            else if (playerHandValue > dealerHandValue)
             {
                 resultMessage = "Player wins!";
-            } else if (dealerHandValue > playerHandValue)
+            }
+            else if (dealerHandValue > playerHandValue)
             {
                 resultMessage = "Dealer wins!";
-            } else
+            }
+            else
             {
                 resultMessage = "Push - Tie game!";
             }
