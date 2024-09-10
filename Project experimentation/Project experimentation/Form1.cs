@@ -258,8 +258,9 @@ namespace Project_experimentation
             {
                 Card dealtCard = myDeck.Deal();
                 dealerCard3TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
-                DisplayCardImage(dealerPictureBox3, dealerHand[2]);
+                
                 dealerHand.Add(dealtCard);
+                DisplayCardImage(dealerPictureBox3, dealerHand[2]);
                 dealerHandValueTextBox.Text = "Dealer hand value: " + CalculateHandValue(dealerHand).ToString();
             }
 
