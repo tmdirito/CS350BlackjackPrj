@@ -104,7 +104,7 @@ namespace Project_experimentation
             dealerHandValueTextBox.Text = "";
             playerHand.Clear();
             dealerHand.Clear();
-            playerPictureBox1.Image = null; playerPictureBox2.Image = null; playerPictureBox3.Image = null;
+            playerPictureBox1.Image = null; playerPictureBox2.Image = null; playerPictureBox3.Image = null; dealerPictureBox1.Image = null; dealerPictureBox2.Image = null; dealerPictureBox3.Image = null;
         }
         public class Card // Card class to create card object that contains rank and suit.
         {
@@ -187,6 +187,8 @@ namespace Project_experimentation
 
                 DisplayCardImage(playerPictureBox1, playerHand[0]); // displays the card image
                 DisplayCardImage(playerPictureBox2, playerHand[1]);
+                DisplayCardImage(dealerPictureBox1, dealerHand[0]);
+                DisplayCardImage(dealerPictureBox2 , dealerHand[1]);
             }
             catch (InvalidOperationException ex)
             {
@@ -254,6 +256,7 @@ namespace Project_experimentation
             {
                 Card dealtCard = myDeck.Deal();
                 dealerCard3TextBox.Text = $"{dealtCard.Rank.ToString()} of {dealtCard.Suit.ToString()}"; // FIXME: Need to find a way for each new card dealt displays in a different text box. The playerHand data is accurate, but the displayed cards get overridden.
+                DisplayCardImage(dealerPictureBox3, dealerHand[2]);
                 dealerHand.Add(dealtCard);
                 dealerHandValueTextBox.Text = "Dealer hand value: " + CalculateHandValue(dealerHand).ToString();
             }
