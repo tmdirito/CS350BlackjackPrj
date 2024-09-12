@@ -28,12 +28,12 @@ namespace Project_experimentation
 
             Image resizedImage = new Bitmap(cardImages[imageName], new Size(150, 225));
             pictureBox.Image = resizedImage;
-            // pictureBox.Image = cardImages[imageName]; // displays correct card in picture box
+            
         }
 
         private string GetCardImageName(Card card) // method to convert card to image file name 
         {
-            char suitChar = card.Suit.ToString().ToLower()[0]; // take first letter of suit and turns is lowercase
+            char suitChar = card.Suit.ToString().ToLower()[0]; // take first letter of suit and turns it lowercase
             int rankValue = (int)card.Rank + 1; // Gets card value based on enum index
             string formattedRank = rankValue.ToString("D2"); // formats rank as double digit
             return $"{suitChar}{formattedRank}.bmp"; // returns image file name in correct syntax
@@ -102,6 +102,7 @@ namespace Project_experimentation
             dealerHand.Clear();
 
             hitButton.Enabled = true;
+            standButton.Enabled = true;
             for (int i = this.Controls.Count - 1; i >= 0; i--) // New functionality added to remove all dynamic picture boxes created within the program
             {
                 if (this.Controls[i] is PictureBox pictureBox)
@@ -292,6 +293,8 @@ namespace Project_experimentation
 
         private void standButton_Click(object sender, EventArgs e)
         {
+            hitButton.Enabled = false;
+            standButton.Enabled = false;
             while (CalculateHandValue(dealerHand) < 17)
             {
                 Card dealtCard = myDeck.Deal();
