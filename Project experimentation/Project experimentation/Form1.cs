@@ -21,7 +21,7 @@ namespace Project_experimentation
 
         private PictureBox dealerFirstCardPictureBox = null;
 
-        
+
 
         private void DisplayCardImage(PictureBox pictureBox, Card card) // method to display the card image 
         {
@@ -74,6 +74,7 @@ namespace Project_experimentation
         {
             InitializeComponent();
             myDeck = new Deck(); // Creates and fills the deck
+            myDeck.Shuffle(); // shuffles the deck automatically now instead of player selecting it
             hitButton.Enabled = false; // disables hit and stand button on reset
             standButton.Enabled = false;
             dealerHandValueTextBox.Visible = false;
@@ -105,7 +106,8 @@ namespace Project_experimentation
         private void button3_Click(object sender, EventArgs e) // Reset deck button, initializes and fills a new deck with all 52 cards, name needs to be changed
         {
             myDeck = new Deck();
-            cardDisplayTextBox.Text = "Deck reset!";
+            myDeck.Shuffle();
+            cardDisplayTextBox.Text = "Deck reset and shuffled!";
             playerHandValueTextBox.Text = "";
             dealerHandValueTextBox.Text = "";
             playerHand.Clear();

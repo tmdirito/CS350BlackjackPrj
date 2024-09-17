@@ -52,6 +52,7 @@
             button1.TabIndex = 0;
             button1.Text = "Shuffle";
             button1.UseVisualStyleBackColor = false;
+            button1.Visible = false;
             button1.Click += button1_Click;
             // 
             // cardDisplayTextBox
@@ -66,12 +67,13 @@
             // button3
             // 
             button3.BackColor = SystemColors.GradientActiveCaption;
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.BackgroundImageLayout = ImageLayout.Zoom;
             button3.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(1154, 995);
+            button3.Location = new Point(1154, 1014);
             button3.Name = "button3";
-            button3.Size = new Size(162, 76);
+            button3.Size = new Size(162, 56);
             button3.TabIndex = 3;
-            button3.Text = "Reset";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
