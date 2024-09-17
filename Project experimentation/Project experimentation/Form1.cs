@@ -76,50 +76,85 @@ namespace Project_experimentation
 
         public Form1() // This is the start of the program, so all code that needs to happen upon launch should go here
         {
-            playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
             
+
             InitializeComponent();
             myDeck = new Deck(); // Creates and fills the deck
             myDeck.Shuffle(); // shuffles the deck automatically now instead of player selecting it
             hitButton.Enabled = false; // disables hit and stand button on reset
             standButton.Enabled = false;
             dealerHandValueTextBox.Visible = false;
+            playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
         }
         //Chip bets
 
         private void chip_10_Click(object sender, EventArgs e)
         {
-            playerBet += 10;
-            betTextBox.Text(playerBet);
-            canDeal = true;
-            playerMoney -= 10;
+            if (playerMoney < 10)
+            {
+                chip_10.Enabled = false;
+                cardDisplayTextBox.Text = "You cannot bet more than your bankroll.";
+            }
+            else
+            {
+                playerBet += 10;
+                betTextBox.Text = $"Bet Amount: {playerBet}";
+                canDeal = true;
+                playerMoney -= 10;
+                playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
+            }
 
         }
         private void chip_25_Click(object sender, EventArgs e)
         {
-            playerBet += 25;
-            betTextBox.Text(playerBet);
-            canDeal = true;
-            playerMoney -= 25;
 
+            if (playerMoney < 25)
+            {
+                chip_25.Enabled = false;
+                cardDisplayTextBox.Text = "You cannot bet more than your bankroll.";
+            }
+            else
+            {
+                playerBet += 25;
+                betTextBox.Text = $"Bet Amount: {playerBet}";
+                canDeal = true;
+                playerMoney -= 25;
+                playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
+            }
 
         }
         private void chip_50_Click(object sender, EventArgs e)
         {
-            playerBet += 50;
-            betTextBox.Text(playerBet);
-            canDeal = true;
-            playerMoney -= 50;
-
+            if (playerMoney < 50)
+            {
+                chip_50.Enabled = false;
+                cardDisplayTextBox.Text = "You cannot bet more than your bankroll.";
+            }
+            else
+            {
+                playerBet += 50;
+                betTextBox.Text = $"Bet Amount: {playerBet}";
+                canDeal = true;
+                playerMoney -= 50;
+                playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
+            }
         }
         private void chip_100_Click(object sender, EventArgs e)
         {
-            playerBet += 100;
-            betTextBox.Text(playerBet);
-            canDeal = true;
-            playerMoney -= 100;
+            if (playerMoney < 100)
+            {
+                chip_100.Enabled = false;
+                cardDisplayTextBox.Text = "You cannot bet more than your bankroll.";
+            }
+            else
+            {
+                playerBet += 100;
+                betTextBox.Text = $"Bet Amount: {playerBet}";
+                canDeal = true;
+                playerMoney -= 100;
+                playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
 
-
+            }
 
         }
 
@@ -159,6 +194,13 @@ namespace Project_experimentation
             dealerHandValueTextBox.Visible = false;
             hitButton.Enabled = false;
             standButton.Enabled = false;
+            playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
+            playerBet = 0;
+            betTextBox.Text = $"Bet Amount: {playerBet}";
+            chip_10.Enabled = true;
+            chip_25.Enabled = true;
+            chip_50.Enabled = true;
+            chip_100.Enabled = true;
             for (int i = this.Controls.Count - 1; i >= 0; i--) // New functionality added to remove all dynamic picture boxes created within the program
             {
                 if (this.Controls[i] is PictureBox pictureBox)
@@ -168,7 +210,7 @@ namespace Project_experimentation
                 }
 
             }
-            canDeal = true;
+            canDeal = false;
         }
         public class Card // Card class to create card object that contains rank and suit.
         {
@@ -276,9 +318,9 @@ namespace Project_experimentation
 
                 canDeal = false;
                 chip_10.Enabled = false;
-                chip_25.enabled = false;
-                chip_50.enabled = false;
-                chip_100.enabled = false;
+                chip_25.Enabled = false;
+                chip_50.Enabled = false;
+                chip_100.Enabled = false;
                 hitButton.Enabled = true; // enable hit and stand buttons after dealing
                 standButton.Enabled = true;
 
@@ -407,13 +449,13 @@ namespace Project_experimentation
             if (dealerHandValue > 21)
             {
                 resultMessage = "Player wins - Dealer busts!";
-                playerMoney += (playerBet * 2) + playerMoney;
+                playerMoney += (playerBet * 2);
 
             }
             else if (playerHandValue > dealerHandValue)
             {
                 resultMessage = "Player wins!";
-                playerMoney += (playerBet * 2) + playerMoney;
+                playerMoney += (playerBet * 2);
 
             }
             else if (dealerHandValue > playerHandValue)
@@ -428,6 +470,7 @@ namespace Project_experimentation
             }
 
             cardDisplayTextBox.Text = resultMessage;
+            playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
         }
     }
 }
