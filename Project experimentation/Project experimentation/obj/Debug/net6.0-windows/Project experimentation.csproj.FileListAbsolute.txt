@@ -32,3 +32,4 @@ C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Projec
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project experimentation.pdb
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project experimentation.genruntimeconfig.cache
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\ref\Project experimentation.dll
+C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project_experimentation.Properties.Resources.resources

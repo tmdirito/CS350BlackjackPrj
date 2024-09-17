@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using static Project_experimentation.Form1;
+
 namespace Project_experimentation
 {
     public partial class Form1 : Form // All variables that need to be accessed by any methods (i.e "public" variables) should be placed under here
@@ -15,6 +17,11 @@ namespace Project_experimentation
 
         private string cardImagesFolderPath = @"..\..\..\images"; // Path to image folder (three directories up)
 
+        private bool canDeal = true;
+
+        private PictureBox dealerFirstCardPictureBox = null;
+
+        
 
         private void DisplayCardImage(PictureBox pictureBox, Card card) // method to display the card image 
         {
@@ -28,7 +35,7 @@ namespace Project_experimentation
 
             Image resizedImage = new Bitmap(cardImages[imageName], new Size(150, 225));
             pictureBox.Image = resizedImage;
-            
+
         }
 
         private string GetCardImageName(Card card) // method to convert card to image file name 
@@ -67,6 +74,9 @@ namespace Project_experimentation
         {
             InitializeComponent();
             myDeck = new Deck(); // Creates and fills the deck
+            hitButton.Enabled = false; // disables hit and stand button on reset
+            standButton.Enabled = false;
+            dealerHandValueTextBox.Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e) // Ignore?
@@ -100,9 +110,9 @@ namespace Project_experimentation
             dealerHandValueTextBox.Text = "";
             playerHand.Clear();
             dealerHand.Clear();
-
-            hitButton.Enabled = true;
-            standButton.Enabled = true;
+            dealerHandValueTextBox.Visible = false;
+            hitButton.Enabled = false;
+            standButton.Enabled = false;
             for (int i = this.Controls.Count - 1; i >= 0; i--) // New functionality added to remove all dynamic picture boxes created within the program
             {
                 if (this.Controls[i] is PictureBox pictureBox)
@@ -112,6 +122,7 @@ namespace Project_experimentation
                 }
 
             }
+            canDeal = true;
         }
         public class Card // Card class to create card object that contains rank and suit.
         {
@@ -172,11 +183,34 @@ namespace Project_experimentation
 
         private void dealButton_Click(object sender, EventArgs e) // Method and functionality for clicking the deal button. This deals 2 cards to both the player and the dealer. Needs improvements such as a face down dealer's card but we will get to that.
         {
+            if (!canDeal) { return; }
             try
             {
                 Card dealtCard = myDeck.Deal();
                 dealerHand.Add(dealtCard);
-                createPictureBoxDealer(dealtCard);
+                // Below is all logic for displaying dealer card, however could not call method since this is unique to the dealer's first card (back of card)
+                PictureBox newPictureBox = new PictureBox();
+                newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+                newPictureBox.Size = new Size(150, 225);
+
+                int x = 475 + (dealerHand.Count - 1) * 110;
+                int y = 75;
+                newPictureBox.Location = new Point(x, y);
+
+                string imageName = "b2fv.bmp"; //back of card image name
+
+                if (!cardImages.ContainsKey(imageName)) // assigns it to the empty dict
+                {
+                    string imagePath = Path.Combine(cardImagesFolderPath, imageName); // sets path for specific image
+                    cardImages[imageName] = Image.FromFile(imagePath); // sets card in dictionary
+                }
+
+                Image resizedImage = new Bitmap(cardImages[imageName], new Size(150, 225));
+                newPictureBox.Image = resizedImage;
+                this.Controls.Add(newPictureBox);
+                dealerFirstCardPictureBox = newPictureBox; // asigns name to picture box so image can be replaced with actual card
+
+                newPictureBox.BringToFront();
                 dealtCard = myDeck.Deal();
                 dealerHand.Add(dealtCard);
                 createPictureBoxDealer(dealtCard);
@@ -194,6 +228,10 @@ namespace Project_experimentation
                 dealerHandValueTextBox.Text = "Dealer hand value: " + (CalculateHandValue(dealerHand).ToString());
                 playerHandValueTextBox.Text = "Player hand value: " + (CalculateHandValue(playerHand).ToString());
 
+                canDeal = false;
+
+                hitButton.Enabled = true; // enable hit and stand buttons after dealing
+                standButton.Enabled = true;
 
             }
             catch (InvalidOperationException ex)
@@ -207,8 +245,8 @@ namespace Project_experimentation
             newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             newPictureBox.Size = new Size(150, 225);
 
-            int x = 10 + (dealerHand.Count - 1) * 110;
-            int y = 100;
+            int x = 475 + (dealerHand.Count - 1) * 110;
+            int y = 75;
             newPictureBox.Location = new Point(x, y);
 
             DisplayCardImage(newPictureBox, dealtCard);
@@ -223,8 +261,8 @@ namespace Project_experimentation
             newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             newPictureBox.Size = new Size(150, 225);
 
-            int x = 10 + (playerHand.Count - 1) * 110;
-            int y = 600;
+            int x = 475 + (playerHand.Count - 1) * 110;
+            int y = 575;
             newPictureBox.Location = new Point(x, y);
 
             DisplayCardImage(newPictureBox, dealtCard);
@@ -239,7 +277,7 @@ namespace Project_experimentation
             try
             {
                 Card dealtCard = myDeck.Deal();
-               
+
                 playerHand.Add(dealtCard);
 
                 createPictureBoxPlayer(dealtCard);
@@ -252,7 +290,8 @@ namespace Project_experimentation
                 if (playerHandValue > 21)
                 {
                     cardDisplayTextBox.Text = "Player busts! Dealer wins.";
-                    hitButton.Enabled = false;
+                    hitButton.Enabled = false; // Diable hit and stand buttons after busting
+                    standButton.Enabled = false;
                 }
             }
             catch (InvalidOperationException ex)
@@ -295,10 +334,17 @@ namespace Project_experimentation
         {
             hitButton.Enabled = false;
             standButton.Enabled = false;
+            dealerHandValueTextBox.Visible = true;
+
+            if (dealerFirstCardPictureBox != null)
+            {
+                DisplayCardImage(dealerFirstCardPictureBox, dealerHand[0]); // replaces face down card with actual first card in dealer's hand
+            }
+
             while (CalculateHandValue(dealerHand) < 17)
             {
                 Card dealtCard = myDeck.Deal();
-                
+
 
                 dealerHand.Add(dealtCard);
                 createPictureBoxDealer(dealtCard);
