@@ -17,7 +17,11 @@ namespace Project_experimentation
 
         private string cardImagesFolderPath = @"..\..\..\images"; // Path to image folder (three directories up)
 
-        private bool canDeal = true;
+        private bool canDeal = false;
+
+        private int playerBet = 0;
+        private int playerMoney = 1000;
+
 
         private PictureBox dealerFirstCardPictureBox = null;
 
@@ -72,6 +76,8 @@ namespace Project_experimentation
 
         public Form1() // This is the start of the program, so all code that needs to happen upon launch should go here
         {
+            playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
+            
             InitializeComponent();
             myDeck = new Deck(); // Creates and fills the deck
             myDeck.Shuffle(); // shuffles the deck automatically now instead of player selecting it
@@ -79,6 +85,44 @@ namespace Project_experimentation
             standButton.Enabled = false;
             dealerHandValueTextBox.Visible = false;
         }
+        //Chip bets
+
+        private void chip_10_Click(object sender, EventArgs e)
+        {
+            playerBet += 10;
+            betTextBox.Text(playerBet);
+            canDeal = true;
+            playerMoney -= 10;
+
+        }
+        private void chip_25_Click(object sender, EventArgs e)
+        {
+            playerBet += 25;
+            betTextBox.Text(playerBet);
+            canDeal = true;
+            playerMoney -= 25;
+
+
+        }
+        private void chip_50_Click(object sender, EventArgs e)
+        {
+            playerBet += 50;
+            betTextBox.Text(playerBet);
+            canDeal = true;
+            playerMoney -= 50;
+
+        }
+        private void chip_100_Click(object sender, EventArgs e)
+        {
+            playerBet += 100;
+            betTextBox.Text(playerBet);
+            canDeal = true;
+            playerMoney -= 100;
+
+
+
+        }
+
 
         private void Form1_Load(object sender, EventArgs e) // Ignore?
         {
@@ -231,7 +275,10 @@ namespace Project_experimentation
                 playerHandValueTextBox.Text = "Player hand value: " + (CalculateHandValue(playerHand).ToString());
 
                 canDeal = false;
-
+                chip_10.Enabled = false;
+                chip_25.enabled = false;
+                chip_50.enabled = false;
+                chip_100.enabled = false;
                 hitButton.Enabled = true; // enable hit and stand buttons after dealing
                 standButton.Enabled = true;
 
@@ -360,10 +407,14 @@ namespace Project_experimentation
             if (dealerHandValue > 21)
             {
                 resultMessage = "Player wins - Dealer busts!";
+                playerMoney += (playerBet * 2) + playerMoney;
+
             }
             else if (playerHandValue > dealerHandValue)
             {
                 resultMessage = "Player wins!";
+                playerMoney += (playerBet * 2) + playerMoney;
+
             }
             else if (dealerHandValue > playerHandValue)
             {
@@ -372,6 +423,8 @@ namespace Project_experimentation
             else
             {
                 resultMessage = "Push - Tie game!";
+                playerMoney += playerBet + playerMoney;
+
             }
 
             cardDisplayTextBox.Text = resultMessage;
