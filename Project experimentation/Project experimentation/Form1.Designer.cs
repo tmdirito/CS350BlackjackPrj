@@ -46,6 +46,8 @@
             chip_100 = new Button();
             playerMoneyTextBox = new TextBox();
             betTextBox = new TextBox();
+            instructionsTextBox = new TextBox();
+            instructionsOKButton = new Button();
             SuspendLayout();
             // 
             // button1
@@ -169,46 +171,59 @@
             // 
             // chip_10
             // 
+            chip_10.BackColor = Color.DarkGray;
             chip_10.BackgroundImage = (Image)resources.GetObject("chip_10.BackgroundImage");
             chip_10.BackgroundImageLayout = ImageLayout.Stretch;
-            chip_10.Location = new Point(210, 906);
+            chip_10.FlatAppearance.BorderColor = Color.DarkGray;
+            chip_10.FlatStyle = FlatStyle.Flat;
+            chip_10.Location = new Point(277, 1035);
             chip_10.Name = "chip_10";
-            chip_10.Size = new Size(145, 156);
+            chip_10.Size = new Size(133, 125);
             chip_10.TabIndex = 14;
-            chip_10.UseVisualStyleBackColor = true;
+            chip_10.UseVisualStyleBackColor = false;
             chip_10.Click += chip_10_Click;
             // 
             // chip_25
             // 
+            chip_25.BackColor = Color.DarkGray;
             chip_25.BackgroundImage = (Image)resources.GetObject("chip_25.BackgroundImage");
             chip_25.BackgroundImageLayout = ImageLayout.Stretch;
-            chip_25.Location = new Point(361, 906);
+            chip_25.FlatAppearance.BorderColor = Color.DarkGray;
+            chip_25.FlatStyle = FlatStyle.Flat;
+            chip_25.Location = new Point(428, 1039);
             chip_25.Name = "chip_25";
-            chip_25.Size = new Size(154, 157);
+            chip_25.Size = new Size(125, 126);
             chip_25.TabIndex = 15;
-            chip_25.UseVisualStyleBackColor = true;
+            chip_25.UseVisualStyleBackColor = false;
             chip_25.Click += chip_25_Click;
             // 
             // chip_50
             // 
+            chip_50.BackColor = Color.DarkGray;
             chip_50.BackgroundImage = (Image)resources.GetObject("chip_50.BackgroundImage");
             chip_50.BackgroundImageLayout = ImageLayout.Stretch;
-            chip_50.Location = new Point(521, 906);
+            chip_50.FlatAppearance.BorderColor = Color.DarkGray;
+            chip_50.FlatStyle = FlatStyle.Flat;
+            chip_50.Location = new Point(571, 1038);
             chip_50.Name = "chip_50";
-            chip_50.Size = new Size(166, 157);
+            chip_50.Size = new Size(139, 129);
             chip_50.TabIndex = 16;
-            chip_50.UseVisualStyleBackColor = true;
+            chip_50.UseVisualStyleBackColor = false;
             chip_50.Click += chip_50_Click;
             // 
             // chip_100
             // 
+            chip_100.BackColor = Color.DarkGray;
             chip_100.BackgroundImage = (Image)resources.GetObject("chip_100.BackgroundImage");
             chip_100.BackgroundImageLayout = ImageLayout.Stretch;
-            chip_100.Location = new Point(693, 906);
+            chip_100.FlatAppearance.BorderColor = Color.DarkGray;
+            chip_100.FlatAppearance.BorderSize = 0;
+            chip_100.FlatStyle = FlatStyle.Flat;
+            chip_100.Location = new Point(731, 1035);
             chip_100.Name = "chip_100";
-            chip_100.Size = new Size(155, 156);
+            chip_100.Size = new Size(138, 132);
             chip_100.TabIndex = 17;
-            chip_100.UseVisualStyleBackColor = true;
+            chip_100.UseVisualStyleBackColor = false;
             chip_100.Click += chip_100_Click;
             // 
             // playerMoneyTextBox
@@ -229,6 +244,26 @@
             betTextBox.Size = new Size(200, 66);
             betTextBox.TabIndex = 19;
             // 
+            // instructionsTextBox
+            // 
+            instructionsTextBox.Location = new Point(46, 100);
+            instructionsTextBox.Multiline = true;
+            instructionsTextBox.Name = "instructionsTextBox";
+            instructionsTextBox.ReadOnly = true;
+            instructionsTextBox.Size = new Size(1227, 908);
+            instructionsTextBox.TabIndex = 20;
+            instructionsTextBox.Text = resources.GetString("instructionsTextBox.Text");
+            // 
+            // instructionsOKButton
+            // 
+            instructionsOKButton.Location = new Point(503, 825);
+            instructionsOKButton.Name = "instructionsOKButton";
+            instructionsOKButton.Size = new Size(276, 46);
+            instructionsOKButton.TabIndex = 21;
+            instructionsOKButton.Text = "I understand";
+            instructionsOKButton.UseVisualStyleBackColor = true;
+            instructionsOKButton.Click += instructionsOKButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -236,7 +271,9 @@
             BackColor = Color.DarkGray;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1325, 1091);
+            ClientSize = new Size(1325, 1172);
+            Controls.Add(instructionsOKButton);
+            Controls.Add(instructionsTextBox);
             Controls.Add(betTextBox);
             Controls.Add(playerMoneyTextBox);
             Controls.Add(chip_100);
@@ -287,5 +324,7 @@
         private Button chip_100;
         private TextBox playerMoneyTextBox;
         private TextBox betTextBox;
+        private TextBox instructionsTextBox;
+        private Button instructionsOKButton;
     }
 }

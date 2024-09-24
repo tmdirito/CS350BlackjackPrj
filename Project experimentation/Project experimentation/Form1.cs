@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
 using static Project_experimentation.Form1;
+using System.Drawing.Drawing2D;
 
 namespace Project_experimentation
 {
@@ -24,6 +25,7 @@ namespace Project_experimentation
 
 
         private PictureBox dealerFirstCardPictureBox = null;
+
 
 
 
@@ -76,7 +78,7 @@ namespace Project_experimentation
 
         public Form1() // This is the start of the program, so all code that needs to happen upon launch should go here
         {
-            
+
 
             InitializeComponent();
             myDeck = new Deck(); // Creates and fills the deck
@@ -269,6 +271,17 @@ namespace Project_experimentation
             }
         }
 
+        public class CircularButton : Button
+        {
+            protected override void OnPaint(PaintEventArgs pevent)
+            {
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
+                this.Region = new System.Drawing.Region(gp);
+                base.OnPaint(pevent);
+            }
+        }
+
         private void dealButton_Click(object sender, EventArgs e) // Method and functionality for clicking the deal button. This deals 2 cards to both the player and the dealer. Needs improvements such as a face down dealer's card but we will get to that.
         {
             if (!canDeal) { return; }
@@ -282,7 +295,7 @@ namespace Project_experimentation
                 newPictureBox.Size = new Size(150, 225);
 
                 int x = 475 + (dealerHand.Count - 1) * 110;
-                int y = 75;
+                int y = 100;
                 newPictureBox.Location = new Point(x, y);
 
                 string imageName = "b2fv.bmp"; //back of card image name
@@ -337,7 +350,7 @@ namespace Project_experimentation
             newPictureBox.Size = new Size(150, 225);
 
             int x = 475 + (dealerHand.Count - 1) * 110;
-            int y = 75;
+            int y = 100;
             newPictureBox.Location = new Point(x, y);
 
             DisplayCardImage(newPictureBox, dealtCard);
@@ -353,7 +366,7 @@ namespace Project_experimentation
             newPictureBox.Size = new Size(150, 225);
 
             int x = 475 + (playerHand.Count - 1) * 110;
-            int y = 575;
+            int y = 600;
             newPictureBox.Location = new Point(x, y);
 
             DisplayCardImage(newPictureBox, dealtCard);
@@ -465,12 +478,18 @@ namespace Project_experimentation
             else
             {
                 resultMessage = "Push - Tie game!";
-                playerMoney += playerBet + playerMoney;
+                playerMoney = playerBet + playerMoney;
 
             }
 
             cardDisplayTextBox.Text = resultMessage;
             playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
+        }
+
+        private void instructionsOKButton_Click(object sender, EventArgs e)
+        {
+            instructionsTextBox.Visible = false;
+            instructionsOKButton.Visible = false;
         }
     }
 }

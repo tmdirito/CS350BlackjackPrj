@@ -9006,6 +9006,17 @@
         AzqQ0JkmL5PRAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="instructionsTextBox.Text" xml:space="preserve">
+    <value>Welcome to Blackjack!
+
+You start with $1000 worth of betting money! Select chips to place bets,
+and select "DEAL" once bets have been placed to deal the initial 2 cards to 
+you and the dealer. Use the "HIT" button to deal yourself another card, and 
+select "STAND" to end your move and turn it over to the dealer. The dealer 
+will complete their turn and then the winner will be displayed with corresponding
+rewards! Select "NEXT ROUND" to reset and place a new bet. Good luck!
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
