@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             button1 = new Button();
             cardDisplayTextBox = new TextBox();
-            button3 = new Button();
+            nextRoundButton = new Button();
             dealButton = new Button();
             hitButton = new Button();
             standButton = new Button();
@@ -54,7 +54,7 @@
             // 
             button1.BackColor = SystemColors.GradientActiveCaption;
             button1.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(1154, 906);
+            button1.Location = new Point(1154, 1006);
             button1.Name = "button1";
             button1.Size = new Size(168, 83);
             button1.TabIndex = 0;
@@ -65,33 +65,36 @@
             // 
             // cardDisplayTextBox
             // 
-            cardDisplayTextBox.Location = new Point(933, 944);
+            cardDisplayTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cardDisplayTextBox.Location = new Point(926, 1006);
             cardDisplayTextBox.Multiline = true;
             cardDisplayTextBox.Name = "cardDisplayTextBox";
             cardDisplayTextBox.ReadOnly = true;
             cardDisplayTextBox.Size = new Size(206, 65);
             cardDisplayTextBox.TabIndex = 2;
             // 
-            // button3
+            // nextRoundButton
             // 
-            button3.BackColor = SystemColors.GradientActiveCaption;
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
-            button3.BackgroundImageLayout = ImageLayout.Zoom;
-            button3.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(1154, 1014);
-            button3.Name = "button3";
-            button3.Size = new Size(162, 56);
-            button3.TabIndex = 3;
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            nextRoundButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            nextRoundButton.BackColor = SystemColors.GradientActiveCaption;
+            nextRoundButton.BackgroundImage = (Image)resources.GetObject("nextRoundButton.BackgroundImage");
+            nextRoundButton.BackgroundImageLayout = ImageLayout.Zoom;
+            nextRoundButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            nextRoundButton.Location = new Point(1160, 1104);
+            nextRoundButton.Name = "nextRoundButton";
+            nextRoundButton.Size = new Size(162, 56);
+            nextRoundButton.TabIndex = 3;
+            nextRoundButton.UseVisualStyleBackColor = false;
+            nextRoundButton.Click += nextRoundButton_Click;
             // 
             // dealButton
             // 
+            dealButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dealButton.BackColor = SystemColors.GradientActiveCaption;
             dealButton.BackgroundImage = (Image)resources.GetObject("dealButton.BackgroundImage");
             dealButton.BackgroundImageLayout = ImageLayout.Zoom;
             dealButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dealButton.Location = new Point(1154, 843);
+            dealButton.Location = new Point(1157, 937);
             dealButton.Name = "dealButton";
             dealButton.Size = new Size(159, 57);
             dealButton.TabIndex = 5;
@@ -100,11 +103,12 @@
             // 
             // hitButton
             // 
+            hitButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             hitButton.BackColor = SystemColors.GradientActiveCaption;
             hitButton.BackgroundImage = (Image)resources.GetObject("hitButton.BackgroundImage");
             hitButton.BackgroundImageLayout = ImageLayout.Zoom;
             hitButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            hitButton.Location = new Point(12, 898);
+            hitButton.Location = new Point(14, 985);
             hitButton.Name = "hitButton";
             hitButton.Size = new Size(172, 63);
             hitButton.TabIndex = 8;
@@ -113,11 +117,12 @@
             // 
             // standButton
             // 
+            standButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             standButton.BackColor = SystemColors.GradientActiveCaption;
             standButton.BackgroundImage = (Image)resources.GetObject("standButton.BackgroundImage");
             standButton.BackgroundImageLayout = ImageLayout.Zoom;
             standButton.Font = new Font("Tw Cen MT Condensed Extra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            standButton.Location = new Point(12, 978);
+            standButton.Location = new Point(12, 1071);
             standButton.Name = "standButton";
             standButton.Size = new Size(174, 57);
             standButton.TabIndex = 9;
@@ -126,6 +131,7 @@
             // 
             // playerHandValueTextBox
             // 
+            playerHandValueTextBox.Anchor = AnchorStyles.Right;
             playerHandValueTextBox.BackColor = Color.Maroon;
             playerHandValueTextBox.Location = new Point(1124, 429);
             playerHandValueTextBox.Multiline = true;
@@ -159,6 +165,7 @@
             // 
             // playerHandTextBox
             // 
+            playerHandTextBox.Anchor = AnchorStyles.Right;
             playerHandTextBox.BackColor = Color.DarkRed;
             playerHandTextBox.Font = new Font("Tw Cen MT", 13.875F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             playerHandTextBox.ForeColor = Color.Black;
@@ -171,6 +178,7 @@
             // 
             // chip_10
             // 
+            chip_10.Anchor = AnchorStyles.Bottom;
             chip_10.BackColor = Color.DarkGray;
             chip_10.BackgroundImage = (Image)resources.GetObject("chip_10.BackgroundImage");
             chip_10.BackgroundImageLayout = ImageLayout.Stretch;
@@ -185,6 +193,7 @@
             // 
             // chip_25
             // 
+            chip_25.Anchor = AnchorStyles.Bottom;
             chip_25.BackColor = Color.DarkGray;
             chip_25.BackgroundImage = (Image)resources.GetObject("chip_25.BackgroundImage");
             chip_25.BackgroundImageLayout = ImageLayout.Stretch;
@@ -199,6 +208,7 @@
             // 
             // chip_50
             // 
+            chip_50.Anchor = AnchorStyles.Bottom;
             chip_50.BackColor = Color.DarkGray;
             chip_50.BackgroundImage = (Image)resources.GetObject("chip_50.BackgroundImage");
             chip_50.BackgroundImageLayout = ImageLayout.Stretch;
@@ -213,6 +223,7 @@
             // 
             // chip_100
             // 
+            chip_100.Anchor = AnchorStyles.Bottom;
             chip_100.BackColor = Color.DarkGray;
             chip_100.BackgroundImage = (Image)resources.GetObject("chip_100.BackgroundImage");
             chip_100.BackgroundImageLayout = ImageLayout.Stretch;
@@ -228,7 +239,8 @@
             // 
             // playerMoneyTextBox
             // 
-            playerMoneyTextBox.Location = new Point(12, 704);
+            playerMoneyTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            playerMoneyTextBox.Location = new Point(14, 760);
             playerMoneyTextBox.Multiline = true;
             playerMoneyTextBox.Name = "playerMoneyTextBox";
             playerMoneyTextBox.ReadOnly = true;
@@ -237,7 +249,8 @@
             // 
             // betTextBox
             // 
-            betTextBox.Location = new Point(12, 805);
+            betTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            betTextBox.Location = new Point(14, 871);
             betTextBox.Multiline = true;
             betTextBox.Name = "betTextBox";
             betTextBox.ReadOnly = true;
@@ -246,17 +259,17 @@
             // 
             // instructionsTextBox
             // 
-            instructionsTextBox.Location = new Point(46, 100);
+            instructionsTextBox.Location = new Point(813, 2);
             instructionsTextBox.Multiline = true;
             instructionsTextBox.Name = "instructionsTextBox";
             instructionsTextBox.ReadOnly = true;
-            instructionsTextBox.Size = new Size(1227, 908);
+            instructionsTextBox.Size = new Size(191, 59);
             instructionsTextBox.TabIndex = 20;
             instructionsTextBox.Text = resources.GetString("instructionsTextBox.Text");
             // 
             // instructionsOKButton
             // 
-            instructionsOKButton.Location = new Point(503, 825);
+            instructionsOKButton.Location = new Point(1040, 12);
             instructionsOKButton.Name = "instructionsOKButton";
             instructionsOKButton.Size = new Size(276, 46);
             instructionsOKButton.TabIndex = 21;
@@ -272,8 +285,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1325, 1172);
-            Controls.Add(instructionsOKButton);
             Controls.Add(instructionsTextBox);
+            Controls.Add(instructionsOKButton);
             Controls.Add(betTextBox);
             Controls.Add(playerMoneyTextBox);
             Controls.Add(chip_100);
@@ -281,7 +294,7 @@
             Controls.Add(chip_25);
             Controls.Add(chip_10);
             Controls.Add(cardDisplayTextBox);
-            Controls.Add(button3);
+            Controls.Add(nextRoundButton);
             Controls.Add(button1);
             Controls.Add(dealButton);
             Controls.Add(playerHandTextBox);
@@ -302,7 +315,7 @@
 
         private Button button1;
         private TextBox cardDisplayTextBox;
-        private Button button3;
+        private Button nextRoundButton;
         private TextBox dealerCard2TextBox;
         private TextBox dealerCard1TextBox;
         private Button dealButton;
