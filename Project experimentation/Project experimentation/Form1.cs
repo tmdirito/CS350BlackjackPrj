@@ -187,6 +187,11 @@ namespace Project_experimentation
 
 
         // Chip bet buttons
+        /*
+         * All chip logic has changed to account for two player, runs normally if twoPlayer is set to false, and if twoPlayer is true,
+         * runs for both players depending on what button is selected, and only allows for dealing once the second player has placed their bet.
+         * Player 1 bet and player 2 bet buttons allow for user to take control over who is placing bet.
+         */
 
 
         private void chip_10_Click(object sender, EventArgs e)
@@ -471,6 +476,7 @@ namespace Project_experimentation
                     player2Hand.Add(dealtCard);
                     createPictureBoxPlayer(dealtCard, 2);
                     player2HandValueTextBox.Text = "Player hand value: " + (CalculateHandValue(player2Hand).ToString());
+                    player2LockedTextBox.Visible = true;
 
 
                 }
@@ -493,6 +499,11 @@ namespace Project_experimentation
                 cardDisplayTextBox.Text = ex.Message;
             }
         }
+
+        /*
+         * Hit button now runs normally if twoPlayer is set to false, and if twoPlayer is set to true, it 
+         * accounts for player 1 busting and the turn transferring over to player 2.
+         */
         private void hitButton_Click(object sender, EventArgs e) // Hit button functionality
         {
 
@@ -509,7 +520,7 @@ namespace Project_experimentation
                 int playerHandValue = CalculateHandValue(playerHand);
                 playerHandValueTextBox.Text = "Player Hand Value: " + playerHandValue.ToString();
 
-                if (!twoPlayer)
+                if (!twoPlayer) 
                 {
                     if (playerHandValue > 21)
                     {
@@ -544,6 +555,11 @@ namespace Project_experimentation
                 cardDisplayTextBox.Text = ex.Message;
             }
         }
+
+        /*
+         * Hit button for second player. Only is activated once player 1 either busts or stands.
+         * Similar hit logic, however if they bust, it displays a winner depending on if both players have busted or not.
+         */
         private void hitButton2_Click(object sender, EventArgs e)
         {
             try
@@ -627,6 +643,11 @@ namespace Project_experimentation
                 cardDisplayTextBox.Text = ex.Message;
             }
         }
+
+        /*
+         * Stand button for player 1, runs normally if it is single player. If it is two player,
+         * it transfers the turn to player 2.
+         */
         private void standButton_Click(object sender, EventArgs e) // Stand button functionality
         {
             hitButton.Enabled = false;
@@ -691,6 +712,10 @@ namespace Project_experimentation
 
             }
         }
+
+        /*
+         * Stand button for player 2, transfers turn to dealer and calculates winner based on every possible outcome.
+         */
         private void standButton2_Click(object sender, EventArgs e)
         {
             hitButton2.Enabled = false;
@@ -930,15 +955,11 @@ namespace Project_experimentation
             newPictureBox.Anchor = AnchorStyles.Top;
             newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             newPictureBox.Size = new Size(150, 225);
-            /*
-            int x = 600 + (dealerHand.Count - 1) * 110;
-            int y = 150;
-            newPictureBox.Location = new Point(x, y);
-            */
+            
             dealerFlowLayoutPanel.Controls.Add(newPictureBox);
             DisplayCardImage(newPictureBox, dealtCard);
 
-            // this.Controls.Add(newPictureBox);
+            
 
             newPictureBox.BringToFront();
         }
@@ -948,11 +969,7 @@ namespace Project_experimentation
             newPictureBox.Anchor = AnchorStyles.Bottom;
             newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             newPictureBox.Size = new Size(150, 225);
-            /* 
-            int x = 275 + (playerHand.Count - 1) * 110;
-            int y = 725;
-            newPictureBox.Location = new Point(x, y);
-            */
+            
             if (player == 1)
             {
                 player1FlowLayoutPanel.Controls.Add(newPictureBox);
@@ -963,7 +980,7 @@ namespace Project_experimentation
                 player2FlowLayoutPanel.Controls.Add(newPictureBox);
                 DisplayCardImage(newPictureBox, dealtCard);
             }
-            // this.Controls.Add(newPictureBox);
+            
 
             newPictureBox.BringToFront();
         }
