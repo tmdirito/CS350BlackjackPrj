@@ -273,6 +273,7 @@
             // 
             // instructionsTextBox
             // 
+            instructionsTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             instructionsTextBox.Location = new Point(12, 9);
             instructionsTextBox.Multiline = true;
             instructionsTextBox.Name = "instructionsTextBox";

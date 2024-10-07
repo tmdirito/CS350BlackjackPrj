@@ -74,6 +74,7 @@ namespace Project_experimentation
             player2LockedTextBox.Visible = false;
             singlePlayerButton.BringToFront();
             twoPlayerButton.BringToFront();
+            nextRoundButton.Enabled = true;
 
             if (twoPlayer)
             {
@@ -520,7 +521,7 @@ namespace Project_experimentation
                 int playerHandValue = CalculateHandValue(playerHand);
                 playerHandValueTextBox.Text = "Player Hand Value: " + playerHandValue.ToString();
 
-                if (!twoPlayer) 
+                if (!twoPlayer)
                 {
                     if (playerHandValue > 21)
                     {
@@ -577,7 +578,7 @@ namespace Project_experimentation
 
                 if (player2HandValue > 21)
                 {
-
+                    nextRoundButton.Enabled = true;
                     hitButton2.Enabled = false; // Disable hit and stand buttons after busting
                     standButton2.Enabled = false;
                     player2LockedTextBox.Visible = true;
@@ -723,6 +724,7 @@ namespace Project_experimentation
             player2Locked = true;
             player2LockedTextBox.Visible = true;
             dealerHandValueTextBox.Visible = true;
+            nextRoundButton.Enabled = true;
 
             if (dealerFirstCardPictureBox != null)
             {
@@ -892,17 +894,20 @@ namespace Project_experimentation
                 player2Bet = 0;
                 player2BetTextBox.Text = $"Bet amount: {player2Bet}";
                 player1BetTurn = true;
+                player2HandValueTextBox.Text = "";
             }
         }
 
         private void player1BetOverride_Click(object sender, EventArgs e)
         {
             player1BetTurn = true;
+            nextRoundButton.Enabled = false;
         } // button to switch who is placing their bets, sets player 1 as the better
 
         private void player2BetOverride_Click(object sender, EventArgs e)
         {
             player1BetTurn = false;
+            nextRoundButton.Enabled = false;
         } // button to switch who is placing their bets, sets player 2 as the better
 
         private void singlePlayerButton_Click(object sender, EventArgs e) // single player button
@@ -955,11 +960,11 @@ namespace Project_experimentation
             newPictureBox.Anchor = AnchorStyles.Top;
             newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             newPictureBox.Size = new Size(150, 225);
-            
+
             dealerFlowLayoutPanel.Controls.Add(newPictureBox);
             DisplayCardImage(newPictureBox, dealtCard);
 
-            
+
 
             newPictureBox.BringToFront();
         }
@@ -969,7 +974,7 @@ namespace Project_experimentation
             newPictureBox.Anchor = AnchorStyles.Bottom;
             newPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
             newPictureBox.Size = new Size(150, 225);
-            
+
             if (player == 1)
             {
                 player1FlowLayoutPanel.Controls.Add(newPictureBox);
@@ -980,7 +985,7 @@ namespace Project_experimentation
                 player2FlowLayoutPanel.Controls.Add(newPictureBox);
                 DisplayCardImage(newPictureBox, dealtCard);
             }
-            
+
 
             newPictureBox.BringToFront();
         }
