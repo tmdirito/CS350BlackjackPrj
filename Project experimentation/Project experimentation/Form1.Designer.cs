@@ -274,11 +274,11 @@
             // instructionsTextBox
             // 
             instructionsTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            instructionsTextBox.Location = new Point(12, 9);
+            instructionsTextBox.Location = new Point(9, 6);
             instructionsTextBox.Multiline = true;
             instructionsTextBox.Name = "instructionsTextBox";
             instructionsTextBox.ReadOnly = true;
-            instructionsTextBox.Size = new Size(1650, 1381);
+            instructionsTextBox.Size = new Size(1653, 1394);
             instructionsTextBox.TabIndex = 20;
             instructionsTextBox.Text = resources.GetString("instructionsTextBox.Text");
             // 
@@ -291,11 +291,12 @@
             groupBox2.Controls.Add(chip_50);
             groupBox2.Controls.Add(chip_100);
             groupBox2.ForeColor = Color.Transparent;
-            groupBox2.Location = new Point(502, 1206);
+            groupBox2.Location = new Point(470, 1206);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(727, 200);
             groupBox2.TabIndex = 22;
             groupBox2.TabStop = false;
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // player1GroupBox
             // 
@@ -512,7 +513,7 @@
             // player1BetOverride
             // 
             player1BetOverride.Anchor = AnchorStyles.Bottom;
-            player1BetOverride.Location = new Point(563, 1152);
+            player1BetOverride.Location = new Point(544, 1152);
             player1BetOverride.Name = "player1BetOverride";
             player1BetOverride.Size = new Size(150, 46);
             player1BetOverride.TabIndex = 29;
@@ -533,7 +534,7 @@
             // 
             // singlePlayerButton
             // 
-            singlePlayerButton.Location = new Point(131, 402);
+            singlePlayerButton.Location = new Point(66, 561);
             singlePlayerButton.Name = "singlePlayerButton";
             singlePlayerButton.Size = new Size(256, 46);
             singlePlayerButton.TabIndex = 31;
@@ -543,7 +544,7 @@
             // 
             // twoPlayerButton
             // 
-            twoPlayerButton.Location = new Point(563, 399);
+            twoPlayerButton.Location = new Point(547, 561);
             twoPlayerButton.Name = "twoPlayerButton";
             twoPlayerButton.Size = new Size(256, 46);
             twoPlayerButton.TabIndex = 32;

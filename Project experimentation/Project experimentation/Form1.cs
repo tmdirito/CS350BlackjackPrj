@@ -902,12 +902,20 @@ namespace Project_experimentation
         {
             player1BetTurn = true;
             nextRoundButton.Enabled = false;
+            chip_10.Enabled = true;
+            chip_25.Enabled = true;
+            chip_50.Enabled = true;
+            chip_100.Enabled = true;
         } // button to switch who is placing their bets, sets player 1 as the better
 
         private void player2BetOverride_Click(object sender, EventArgs e)
         {
             player1BetTurn = false;
             nextRoundButton.Enabled = false;
+            chip_10.Enabled = true;
+            chip_25.Enabled = true;
+            chip_50.Enabled = true;
+            chip_100.Enabled = true;
         } // button to switch who is placing their bets, sets player 2 as the better
 
         private void singlePlayerButton_Click(object sender, EventArgs e) // single player button
@@ -1043,6 +1051,9 @@ namespace Project_experimentation
             cardDisplayTextBox.Text = "Deck shuffled!";
         }
 
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }

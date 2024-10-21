@@ -20,7 +20,6 @@ C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Projec
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\bin\Debug\net6.0-windows\Project experimentation.runtimeconfig.json
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\bin\Debug\net6.0-windows\Project experimentation.dll
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\bin\Debug\net6.0-windows\Project experimentation.pdb
-C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project experimentation.csproj.AssemblyReference.cache
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project_experimentation.Form1.resources
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project experimentation.csproj.GenerateResource.cache
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project experimentation.GeneratedMSBuildEditorConfig.editorconfig
@@ -33,3 +32,4 @@ C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Projec
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project experimentation.genruntimeconfig.cache
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\ref\Project experimentation.dll
 C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project_experimentation.Properties.Resources.resources
+C:\Users\tobyo\OneDrive\Desktop\CS350BlackjackPrj\Project experimentation\Project experimentation\obj\Debug\net6.0-windows\Project experimentation.sourcelink.json
