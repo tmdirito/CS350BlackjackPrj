@@ -22,7 +22,7 @@ namespace Project_experimentation
         private Dictionary<string, Image> cardImages = new Dictionary<string, Image>(); // Dictionary to load all image files upon launch
         private string cardImagesFolderPath = @"..\..\..\images"; // Path to image folder (three directories up)
         private bool canDeal = false;
-        private bool twoPlayer = true;
+        private bool twoPlayer = false;
         private bool player1Locked = false;
         private bool player2Locked = false;
         private bool player1BetTurn = true;
@@ -75,6 +75,7 @@ namespace Project_experimentation
             singlePlayerButton.BringToFront();
             twoPlayerButton.BringToFront();
             nextRoundButton.Enabled = true;
+            helpGroupBox.Visible = false;
 
             if (twoPlayer)
             {
@@ -87,6 +88,7 @@ namespace Project_experimentation
                 standButton2.Enabled = false;
                 player1BetOverride.Visible = true;
                 player2BetOverride.Visible = true;
+                player2HandGroupBox.Visible = true;
             }
             else if (!twoPlayer)
             {
@@ -119,6 +121,7 @@ namespace Project_experimentation
             standButton2.Enabled = false;
             player1BetOverride.Visible = true;
             player2BetOverride.Visible = true;
+            player2HandGroupBox.Visible = true;
         }
 
 
@@ -481,7 +484,10 @@ namespace Project_experimentation
 
 
                 }
-
+                if (!twoPlayer)
+                {
+                    helpGroupBox.Visible = true;
+                }
 
                 dealerHandValueTextBox.Text = "Dealer hand value: " + (CalculateHandValue(dealerHand).ToString());
                 playerHandValueTextBox.Text = "Player hand value: " + (CalculateHandValue(playerHand).ToString());
@@ -493,8 +499,10 @@ namespace Project_experimentation
                 chip_100.Enabled = false;
                 hitButton.Enabled = true; // enable hit and stand buttons after dealing
                 standButton.Enabled = true;
+                nextRoundButton.Enabled = false;
 
             }
+            
             catch (InvalidOperationException ex)
             {
                 cardDisplayTextBox.Text = ex.Message;
@@ -528,6 +536,8 @@ namespace Project_experimentation
                         cardDisplayTextBox.Text = "Player busts! Dealer wins.";
                         hitButton.Enabled = false; // Disable hit and stand buttons after busting
                         standButton.Enabled = false;
+                        nextRoundButton.Enabled = true;
+                        
 
                     }
                 }
@@ -636,6 +646,7 @@ namespace Project_experimentation
                     {
                         cardDisplayTextBox.Text = "Players busts! Dealer wins.";
                     }
+                    nextRoundButton.Enabled = true;
 
                 }
             }
@@ -701,6 +712,7 @@ namespace Project_experimentation
 
                 cardDisplayTextBox.Text = resultMessage;
                 playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
+                nextRoundButton.Enabled = true;
             }
             else if (twoPlayer)
             {
@@ -833,6 +845,7 @@ namespace Project_experimentation
             cardDisplayTextBox.Text = resultMessage;
             playerMoneyTextBox.Text = $"Remaining Money: {playerMoney}";
             player2MoneyTextBox.Text = $"Remaining Money: {player2Money}";
+            nextRoundButton.Enabled = true;
 
         }
         private void nextRoundButton_Click(object sender, EventArgs e) // Next round button
@@ -895,6 +908,11 @@ namespace Project_experimentation
                 player2BetTextBox.Text = $"Bet amount: {player2Bet}";
                 player1BetTurn = true;
                 player2HandValueTextBox.Text = "";
+            }
+            if (!twoPlayer)
+            {
+                helpGroupBox.Visible = false;
+                helpTextBox.Text = "Stuck? Click on the light bulb for a hint!";
             }
         }
 
@@ -1054,6 +1072,18 @@ namespace Project_experimentation
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void helpButton_Click(object sender, EventArgs e) // help button functionality for giving hints.
+        {
+            int playerHandValue = CalculateHandValue(playerHand);
+            if (playerHandValue < 17)
+            {
+                helpTextBox.Text = "Looks like your hand value is below 17 right now, usually it's a good idea to 'hit' on a hand like this. (Click the light bulb for another hint).";
+            } else
+            {
+                helpTextBox.Text = "Your hand value is pretty close to 21 already and you don't want to run the risk of busting, so it's a good idea to 'stand' (Click the light bulb for another hint).";
+            }
         }
     }
 }

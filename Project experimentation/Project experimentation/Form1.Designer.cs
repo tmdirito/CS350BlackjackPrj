@@ -68,6 +68,9 @@
             player2BetOverride = new Button();
             singlePlayerButton = new Button();
             twoPlayerButton = new Button();
+            helpGroupBox = new GroupBox();
+            helpTextBox = new TextBox();
+            helpButton = new Button();
             groupBox2.SuspendLayout();
             player1GroupBox.SuspendLayout();
             player1HandGroupBox.SuspendLayout();
@@ -75,6 +78,7 @@
             controlsGroupBox.SuspendLayout();
             player2HandGroupBox.SuspendLayout();
             player2GroupBox.SuspendLayout();
+            helpGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // cardDisplayTextBox
@@ -278,7 +282,7 @@
             instructionsTextBox.Multiline = true;
             instructionsTextBox.Name = "instructionsTextBox";
             instructionsTextBox.ReadOnly = true;
-            instructionsTextBox.Size = new Size(1653, 1394);
+            instructionsTextBox.Size = new Size(1653, 1400);
             instructionsTextBox.TabIndex = 20;
             instructionsTextBox.Text = resources.GetString("instructionsTextBox.Text");
             // 
@@ -552,6 +556,41 @@
             twoPlayerButton.UseVisualStyleBackColor = true;
             twoPlayerButton.Click += twoPlayerButton_Click;
             // 
+            // helpGroupBox
+            // 
+            helpGroupBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            helpGroupBox.BackColor = Color.White;
+            helpGroupBox.Controls.Add(helpTextBox);
+            helpGroupBox.Controls.Add(helpButton);
+            helpGroupBox.Location = new Point(1203, 1165);
+            helpGroupBox.Name = "helpGroupBox";
+            helpGroupBox.Size = new Size(470, 180);
+            helpGroupBox.TabIndex = 33;
+            helpGroupBox.TabStop = false;
+            // 
+            // helpTextBox
+            // 
+            helpTextBox.Font = new Font("Franklin Gothic Medium Cond", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            helpTextBox.Location = new Point(124, 0);
+            helpTextBox.Multiline = true;
+            helpTextBox.Name = "helpTextBox";
+            helpTextBox.Size = new Size(342, 180);
+            helpTextBox.TabIndex = 1;
+            helpTextBox.Text = "\r\n\r\nStuck? Click on the light bulb for a hint!";
+            helpTextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // helpButton
+            // 
+            helpButton.BackColor = Color.Black;
+            helpButton.BackgroundImage = (Image)resources.GetObject("helpButton.BackgroundImage");
+            helpButton.BackgroundImageLayout = ImageLayout.Stretch;
+            helpButton.Location = new Point(0, 38);
+            helpButton.Name = "helpButton";
+            helpButton.Size = new Size(126, 110);
+            helpButton.TabIndex = 0;
+            helpButton.UseVisualStyleBackColor = false;
+            helpButton.Click += helpButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -560,6 +599,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1674, 1411);
+            Controls.Add(helpGroupBox);
             Controls.Add(singlePlayerButton);
             Controls.Add(twoPlayerButton);
             Controls.Add(instructionsTextBox);
@@ -591,6 +631,8 @@
             player2HandGroupBox.PerformLayout();
             player2GroupBox.ResumeLayout(false);
             player2GroupBox.PerformLayout();
+            helpGroupBox.ResumeLayout(false);
+            helpGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -612,7 +654,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private TextBox dealerTitleTextBox;
         private TextBox playerHandTextBox;
-        private GroupBox groupBox1;
+        private GroupBox helpGroupBox;
         private Button chip_10;
         private Button chip_25;
         private Button chip_50;
@@ -642,5 +684,7 @@
         private Button player2BetOverride;
         private Button singlePlayerButton;
         private Button twoPlayerButton;
+        private Button helpButton;
+        private TextBox helpTextBox;
     }
 }
