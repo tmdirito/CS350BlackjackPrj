@@ -856,8 +856,12 @@ namespace Project_experimentation
             {
                 myDeck = new Deck();
                 myDeck.Shuffle();
+                cardDisplayTextBox.Text = $"Next round! Card count in deck: {myDeck.Count()} (Deck reset and shuffled)";
+            } else
+            {
+                cardDisplayTextBox.Text = $"Next round! Card count in deck: {myDeck.Count()}";
             }
-            cardDisplayTextBox.Text = $"Next round! Card count in deck: {myDeck.Count()}";
+            
             playerHandValueTextBox.Text = "";
             dealerHandValueTextBox.Text = "";
             playerHand.Clear();
