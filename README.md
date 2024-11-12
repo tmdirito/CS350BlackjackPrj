@@ -23,10 +23,16 @@ This repository contains a C# WinForms application that implements a blackjack g
 ## Getting Started
 
 1.  **Prerequisites:**
-    *   Visual Studio 2022 (or later) with .NET MAUI workload installed
+    *   Visual Studio 2022 (or later) with .NET WinForms workload installed
     *   .NET SDK
 2.  **Clone the repository:**
     *   https://github.com/tmdirito/CS350BlackjackPrj.git
+3. **Open the Repository in Visual Studio 2022**
+    *   Ensure that all files have been opened
+        *   Form1.cs
+        *   Form1.Designer.cs
+        *   Program.cs
+    *   Click the run program button and the application will launch in a separate window on your device.
 
 ## How to Play
 1. Select single or two player mode upon program launch.
@@ -39,5 +45,5 @@ This repository contains a C# WinForms application that implements a blackjack g
 ## Future implementation
 1. Smoother graphics.
 2. Higher level blackjack logic (i.e splitting, doubling down, etc.)
-3. Framework adjustments to allow for the app to be run on IOS/Android.
+3. 'Hint' option to allow for players to request help if they do not know what to do on a turn.
 
